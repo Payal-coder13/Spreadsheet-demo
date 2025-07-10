@@ -1,9 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
 import Spreadsheet from "react-spreadsheet"
-import type { Matrix } from "react-spreadsheet";
+
 
 const initialRows = 25;
 const initialCols = 12;
+
+type Cell = {
+  value: string;
+};
+
+type Matrix<T> = T[][];
 
 const SpreadsheetGrid: React.FC = () => {
   const [data, setData] = useState<Matrix<Cell>>([]);
@@ -63,7 +69,7 @@ const SpreadsheetGrid: React.FC = () => {
         className="h-full w-full overflow-auto bg-white fixed"
         onScroll={handleScroll}
       >
-        <Spreadsheet data={data} onChange={setData} columnLabels={["Job Request","Submitted","Status","Submitter","URL","Assigned","Priority","Due Date","Est. Value"]} />
+        <Spreadsheet data={data} onChange={(newData) => setData(newData as Matrix<Cell>)} columnLabels={["Job Request","Submitted","Status","Submitter","URL","Assigned","Priority","Due Date","Est. Value"]} />
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-import React from 'react'
 import { PanelRight, Search, BellDotIcon, CircleUser} from 'lucide-react'
 
 const Header = () => {
